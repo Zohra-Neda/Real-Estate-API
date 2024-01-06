@@ -34,8 +34,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_04_100214) do
     t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "agents_id"
-    t.index ["agents_id"], name: "index_houses_on_agents_id"
+    t.integer "users_id"
+    t.integer "agent_id"
+    t.index ["agent_id"], name: "index_houses_on_agent_id"
+    t.index ["users_id"], name: "index_houses_on_users_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -44,10 +46,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_04_100214) do
     t.string "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "houses_id"
-    t.index ["houses_id"], name: "index_users_on_houses_id"
   end
 
-  add_foreign_key "houses", "agents", column: "agents_id"
-  add_foreign_key "users", "houses", column: "houses_id"
+  add_foreign_key "houses", "agents"
+  add_foreign_key "houses", "users", column: "users_id"
 end

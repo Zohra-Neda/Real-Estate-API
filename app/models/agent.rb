@@ -3,5 +3,5 @@ class Agent < ApplicationRecord
     validates :phone, presence: true
     validates :image, presence: true
 
-    belongs_to :house
+    has_many :houses
 end

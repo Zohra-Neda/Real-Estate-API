@@ -16,7 +16,6 @@ class HousesController < ApplicationController
   # POST /houses
   def create
     @house = House.new(house_params)
-
     if @house.save
       render json: @house, status: :created, location: @house
     else
@@ -46,6 +45,6 @@ class HousesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def house_params
-      params.require(:house).permit(:house_type, :name, :description, :image, :image_lg, :country, :address, :bedrooms, :bathrooms, :surface, :year, :price)
+      params.require(:house).permit(:house_type, :name, :description, :image, :image_lg, :country, :address, :bedrooms, :bathrooms, :surface, :year, :price, :agent_id)
     end
 end

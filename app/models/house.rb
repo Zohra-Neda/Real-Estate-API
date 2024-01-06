@@ -12,6 +12,5 @@ class House < ApplicationRecord
     validates :year, presence: true
     validates :price, presence: true
 
-    belongs_to :user
-    has_one :agent
+    belongs_to :agent
 end
